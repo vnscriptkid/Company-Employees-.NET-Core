@@ -1,0 +1,4 @@
+2020-12-25 00:01:16.8365 INFO This is a normal notification
+2020-12-25 00:01:16.8841 DEBUG This comes from debug
+2020-12-25 00:01:16.8841 WARN This is a yellow warning
+2020-12-25 00:01:16.8841 ERROR Something wrong happens
