@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Contracts
+namespace IRepositoryBase
 {
     public class Class1
     {
