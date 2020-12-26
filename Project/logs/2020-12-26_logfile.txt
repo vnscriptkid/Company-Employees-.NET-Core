@@ -166,3 +166,7 @@ Entities.Models.Company -> Entities.DataTransferObjects.CompanyDto
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
 2020-12-26 14:07:18.3311 INFO Company with id 3d490a70-94ce-4d15-9494-5248280c2ce4 does not exist in database.
+2020-12-26 15:23:48.2409 INFO Company with id c9d4c053-49b6-410c-bc78-2d54a999187a does not exist.
+2020-12-26 15:24:14.1964 INFO Company with id c9d4c053-49b6-410c-bc78-2d54a9991871 does not exist.
+2020-12-26 15:27:03.3809 INFO Employee with id 86dba8c0-d178-41e7-938c-ed49778fb52b does not exist
+2020-12-26 15:27:27.3486 INFO Company with id c9d4c053-49b6-410c-bc78-2d54a9991871 does not exist.
