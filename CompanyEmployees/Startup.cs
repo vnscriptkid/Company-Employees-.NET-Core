@@ -37,9 +37,12 @@ namespace CompanyEmployees
             services.ConfigureLoggerService();
             services.ConfigureSqlContext(Configuration);
             services.ConfigureRepositoryManager();
-
-            services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddControllers(config =>
+            {
+                config.RespectBrowserAcceptHeader = true;
+            }).AddXmlDataContractSerializerFormatters();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -56,6 +56,7 @@ namespace CompanyEmployees.Controllers
 
             var employee = _repo.Employee.GetEmployee(companyId, employeeId, trackChanges: false);
 
+
             if (employee == null)
             {
                 _logger.LogInfo($"Employee with id {employeeId} does not exist in the database");
