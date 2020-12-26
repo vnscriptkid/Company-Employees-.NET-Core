@@ -42,6 +42,7 @@ namespace CompanyEmployees
             services.AddControllers(config =>
             {
                 config.RespectBrowserAcceptHeader = true;
+                config.ReturnHttpNotAcceptable = true;
             }).AddXmlDataContractSerializerFormatters();
         }
 
