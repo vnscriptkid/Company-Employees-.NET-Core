@@ -1,0 +1,36 @@
+2020-12-26 08:36:41.0393 INFO This is a normal notification
+2020-12-26 08:36:41.0817 DEBUG This comes from debug
+2020-12-26 08:36:41.0817 WARN This is a yellow warning
+2020-12-26 08:36:41.0817 ERROR Something wrong happens
+2020-12-26 08:39:52.1749 INFO This is a normal notification
+2020-12-26 08:39:52.1749 DEBUG This comes from debug
+2020-12-26 08:39:52.1749 WARN This is a yellow warning
+2020-12-26 08:39:52.1749 ERROR Something wrong happens
+2020-12-26 08:41:30.0130 INFO This is a normal notification
+2020-12-26 08:41:30.0391 DEBUG This comes from debug
+2020-12-26 08:41:30.0391 WARN This is a yellow warning
+2020-12-26 08:41:30.0391 ERROR Something wrong happens
+2020-12-26 08:44:46.6497 INFO This is a normal notification
+2020-12-26 08:44:46.6813 DEBUG This comes from debug
+2020-12-26 08:44:46.6813 WARN This is a yellow warning
+2020-12-26 08:44:46.6813 ERROR Something wrong happens
+2020-12-26 08:46:16.3124 INFO This is a normal notification
+2020-12-26 08:46:16.3358 DEBUG This comes from debug
+2020-12-26 08:46:16.3358 WARN This is a yellow warning
+2020-12-26 08:46:16.3358 ERROR Something wrong happens
+2020-12-26 08:46:45.3635 INFO This is a normal notification
+2020-12-26 08:46:45.3723 DEBUG This comes from debug
+2020-12-26 08:46:45.3723 WARN This is a yellow warning
+2020-12-26 08:46:45.3723 ERROR Something wrong happens
+2020-12-26 08:49:48.4146 INFO This is a normal notification
+2020-12-26 08:49:48.4461 DEBUG This comes from debug
+2020-12-26 08:49:48.4461 WARN This is a yellow warning
+2020-12-26 08:49:48.4461 ERROR Something wrong happens
+2020-12-26 09:08:48.4138 INFO This is a normal notification
+2020-12-26 09:08:48.4465 DEBUG This comes from debug
+2020-12-26 09:08:48.4465 WARN This is a yellow warning
+2020-12-26 09:08:48.4465 ERROR Something wrong happens
+2020-12-26 09:31:13.7068 INFO This is a normal notification
+2020-12-26 09:31:13.7536 DEBUG This comes from debug
+2020-12-26 09:31:13.7536 WARN This is a yellow warning
+2020-12-26 09:31:13.7536 ERROR Something wrong happens
