@@ -2,6 +2,7 @@
 using Entities;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -52,5 +53,25 @@ namespace CompanyEmployees.Extensions
 
         public static IMvcBuilder ConfigureCustomCSVFormatter(this IMvcBuilder builder) =>
             builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
+
+        public static void ConfigureModelBindingExceptionHandling(this IServiceCollection services)
+        {
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = actionContext =>
+                {
+                    ValidationProblemDetails error = actionContext.ModelState
+                        .Where(e => e.Value.Errors.Count > 0)
+                        .Select(e => new ValidationProblemDetails(actionContext.ModelState)).FirstOrDefault();
+
+                    // Here you can add logging to you log file or to your Application Insights.
+                    // For example, using Serilog:
+                    // Log.Error($"{{@RequestPath}} received invalid message format: {{@Exception}}", 
+                    //   actionContext.HttpContext.Request.Path.Value, 
+                    //   error.Errors.Values);
+                    return new BadRequestObjectResult(error);
+                };
+            });
+        }
     }
 }

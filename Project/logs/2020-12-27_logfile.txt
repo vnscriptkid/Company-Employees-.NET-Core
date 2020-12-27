@@ -1,1 +1,76 @@
 2020-12-27 13:12:02.0593 ERROR Company with id 53a1237a-3ed3-4462-b9f0-5a7bb1056a33 does not exist in the database.
+2020-12-27 16:46:28.4821 ERROR Something went wrong: System.FormatException: Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+   at System.Guid.GuidResult.SetFailure(Boolean overflow, String failureMessageID)
+   at System.Guid.TryParseExactD(ReadOnlySpan`1 guidString, GuidResult& result)
+   at System.Guid.TryParseGuid(ReadOnlySpan`1 guidString, GuidResult& result)
+   at System.Guid..ctor(String g)
+   at System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at System.ComponentModel.TypeConverter.ConvertFromString(String text)
+   at CompanyEmployees.ModelBinders.ArrayModelBinder.<>c__DisplayClass0_0.<BindModelAsync>b__0(String x) in D:\workspace\C#\CompanyEmployees\CompanyEmployees\ModelBinders\ArrayModelBinder.cs:line 37
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at CompanyEmployees.ModelBinders.ArrayModelBinder.BindModelAsync(ModelBindingContext bindingContext) in D:\workspace\C#\CompanyEmployees\CompanyEmployees\ModelBinders\ArrayModelBinder.cs:line 35
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-12-27 16:57:16.1088 ERROR Something went wrong: System.FormatException: Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+   at System.Guid.GuidResult.SetFailure(Boolean overflow, String failureMessageID)
+   at System.Guid.TryParseExactD(ReadOnlySpan`1 guidString, GuidResult& result)
+   at System.Guid.TryParseGuid(ReadOnlySpan`1 guidString, GuidResult& result)
+   at System.Guid..ctor(String g)
+   at System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at System.ComponentModel.TypeConverter.ConvertFromString(String text)
+   at CompanyEmployees.ModelBinders.ArrayModelBinder.<>c__DisplayClass0_0.<BindModelAsync>b__0(String x) in D:\workspace\C#\CompanyEmployees\CompanyEmployees\ModelBinders\ArrayModelBinder.cs:line 37
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at CompanyEmployees.ModelBinders.ArrayModelBinder.BindModelAsync(ModelBindingContext bindingContext) in D:\workspace\C#\CompanyEmployees\CompanyEmployees\ModelBinders\ArrayModelBinder.cs:line 35
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-12-27 17:27:30.7080 INFO This is a normal notification
+2020-12-27 17:27:30.7678 DEBUG This comes from debug
+2020-12-27 17:27:30.7678 WARN This is a yellow warning
+2020-12-27 17:27:30.7678 ERROR Something wrong happens
+2020-12-27 17:48:36.4749 ERROR Something went wrong: System.FormatException: Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+   at System.Guid.GuidResult.SetFailure(Boolean overflow, String failureMessageID)
+   at System.Guid.TryParseExactD(ReadOnlySpan`1 guidString, GuidResult& result)
+   at System.Guid.TryParseGuid(ReadOnlySpan`1 guidString, GuidResult& result)
+   at System.Guid..ctor(String g)
+   at System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at System.ComponentModel.TypeConverter.ConvertFromString(String text)
+   at CompanyEmployees.ModelBinders.ArrayModelBinder.<>c__DisplayClass0_0.<BindModelAsync>b__0(String x) in D:\workspace\C#\CompanyEmployees\CompanyEmployees\ModelBinders\ArrayModelBinder.cs:line 37
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at CompanyEmployees.ModelBinders.ArrayModelBinder.BindModelAsync(ModelBindingContext bindingContext) in D:\workspace\C#\CompanyEmployees\CompanyEmployees\ModelBinders\ArrayModelBinder.cs:line 35
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-12-27 17:50:21.9709 INFO This is a normal notification
+2020-12-27 17:50:22.0005 DEBUG This comes from debug
+2020-12-27 17:50:22.0005 WARN This is a yellow warning
+2020-12-27 17:50:22.0005 ERROR Something wrong happens
+2020-12-27 17:50:40.6090 INFO This is a normal notification
+2020-12-27 17:50:40.6395 DEBUG This comes from debug
+2020-12-27 17:50:40.6395 WARN This is a yellow warning
+2020-12-27 17:50:40.6395 ERROR Something wrong happens
