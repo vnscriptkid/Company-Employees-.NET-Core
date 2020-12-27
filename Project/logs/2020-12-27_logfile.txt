@@ -1,0 +1,1 @@
+2020-12-27 13:12:02.0593 ERROR Company with id 53a1237a-3ed3-4462-b9f0-5a7bb1056a33 does not exist in the database.

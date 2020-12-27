@@ -43,7 +43,7 @@ namespace CompanyEmployees.Controllers
             return Ok(employeesDto);
         }
 
-        [HttpGet("{employeeId}")]
+        [HttpGet("{employeeId}", Name = "GetSingleEmployeeOfCompany")]
         public IActionResult GetSingleEmployeeOfCompany(Guid companyId, Guid employeeId)
         {
             var company = _repo.Company.GetCompany(companyId, trackChanges: false);
@@ -66,6 +66,44 @@ namespace CompanyEmployees.Controllers
             var employeeDto = _mapper.Map<EmployeeDto>(employee); 
 
             return Ok(employeeDto);
+        }
+
+        [HttpPost(Name = "CreateEmployeeForCompany")]
+        public IActionResult CreateEmployeeForCompany(Guid companyId, [FromBody] EmployeeForCreationDto employeeDto)
+        {
+            if (employeeDto == null)
+            {
+                _logger.LogError("EmployeeForCreationDto object is missing in request sent from client.");
+                return BadRequest("EmployeeForCreationDto object is missing in the body");
+            }
+
+            // make sure company exists
+            var company = _repo.Company.GetCompany(companyId, trackChanges: false);
+
+            if (company == null)
+            {
+                _logger.LogInfo($"Company with id {companyId} does not exist in the database.");
+                return NotFound();
+            }
+
+            // map to employee model
+            var employee = _mapper.Map<Employee>(employeeDto);
+
+            // create new employee
+            _repo.Employee.Create(companyId: companyId, employee: employee);
+
+            // save
+
+            _repo.Save();
+
+            // map to dto
+            var employeeToReturn = _mapper.Map<EmployeeDto>(employee);
+
+            // return new employee dto
+            return CreatedAtRoute(
+                routeName: "GetSingleEmployeeOfCompany", 
+                routeValues: new { companyId = companyId, employeeId = employeeToReturn.Id }, 
+                employeeToReturn);
         }
     }
 }
