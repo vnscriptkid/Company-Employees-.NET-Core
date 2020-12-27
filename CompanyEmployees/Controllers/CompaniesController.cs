@@ -124,5 +124,25 @@ namespace CompanyEmployees.Controllers
             return CreatedAtRoute("CompanyCollection", new { ids }, companyCollectionToReturn);
         }
 
+        [HttpDelete("{id}", Name = "DeleteCompany")]
+        public IActionResult DeleteCompany(Guid id)
+        {
+            // find company by id
+            var company = _repository.Company.GetCompany(companyId: id, trackChanges: false);
+
+            if (company == null)
+            {
+                _logger.LogInfo($"Company with id {id} does not exist in the database.");
+                return NotFound();
+            }
+
+            // delete
+            _repository.Company.Delete(company);
+
+            // save
+            _repository.Save();
+
+            return Ok();
+        }
     }
 }

@@ -14,11 +14,6 @@ namespace Repository
         public CompanyRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
         }
-            
-        public void Create(CompanyForCreationDto company)
-        {
-            Create(company);
-        }
 
         public IEnumerable<Company> GetAllCompanies(bool trackChanges)
         {

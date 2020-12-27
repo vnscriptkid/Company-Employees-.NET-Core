@@ -74,3 +74,4 @@
 2020-12-27 17:50:40.6395 DEBUG This comes from debug
 2020-12-27 17:50:40.6395 WARN This is a yellow warning
 2020-12-27 17:50:40.6395 ERROR Something wrong happens
+2020-12-27 18:39:31.6852 INFO Company with id 3d490a70-94ce-4d15-9494-5248280c2ce3 does not exist in database.
