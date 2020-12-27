@@ -90,7 +90,7 @@ namespace CompanyEmployees.Controllers
             var employee = _mapper.Map<Employee>(employeeDto);
 
             // create new employee
-            _repo.Employee.Create(companyId: companyId, employee: employee);
+            _repo.Employee.CreateEmployee(companyId: companyId, employee: employee);
 
             // save
 
@@ -104,6 +104,37 @@ namespace CompanyEmployees.Controllers
                 routeName: "GetSingleEmployeeOfCompany", 
                 routeValues: new { companyId = companyId, employeeId = employeeToReturn.Id }, 
                 employeeToReturn);
+        }
+
+        [HttpDelete("{employeeId}", Name = "DeleteEmployeeOfCompany")]
+        public IActionResult DeleteEmployeeOfCompany(Guid companyId, Guid employeeId)
+        {
+            // find company
+            var company = _repo.Company.GetCompany(companyId, trackChanges: false);
+
+            if (company == null)
+            {
+                _logger.LogError($"[DeleteEmployeeOfCompany] Company with id {companyId} does not exist");
+                return NotFound();
+            }
+
+            // find employee
+            var employee = _repo.Employee.GetEmployee(companyId, employeeId, trackChanges: false);
+            
+            if (employee == null)
+            {
+                _logger.LogError($"[DeleteEmployeeOfCompany] Employee with id {companyId} and companyId {companyId} does not exist");
+                return NotFound();
+            }
+
+            // delete employee
+            _repo.Employee.DeleteEmployee(employee);
+
+            // save
+            _repo.Save();
+
+            // return
+            return NoContent();
         }
     }
 }

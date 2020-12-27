@@ -64,7 +64,7 @@ namespace CompanyEmployees.Controllers
 
             var company = _mapper.Map<Company>(companyDto);
 
-            _repository.Company.Create(company);
+            _repository.Company.CreateCompany(company);
 
             _repository.Save();
 
@@ -112,7 +112,7 @@ namespace CompanyEmployees.Controllers
 
             foreach (var company in companiesToCreate)
             {
-                _repository.Company.Create(company);
+                _repository.Company.CreateCompany(company);
             }
 
             _repository.Save();
@@ -137,12 +137,12 @@ namespace CompanyEmployees.Controllers
             }
 
             // delete
-            _repository.Company.Delete(company);
+            _repository.Company.DeleteCompany(company);
 
             // save
             _repository.Save();
 
-            return Ok();
+            return NoContent();
         }
     }
 }

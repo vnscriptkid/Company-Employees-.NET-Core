@@ -26,10 +26,15 @@ namespace Repository
                 .FirstOrDefault();
         }
 
-        public void Create(Guid companyId, Employee employee)
+        public void CreateEmployee(Guid companyId, Employee employee)
         {
             employee.CompanyId = companyId;
             Create(employee);
+        }
+
+        public void DeleteEmployee(Employee employee)
+        {
+            Delete(employee);
         }
     }
 }

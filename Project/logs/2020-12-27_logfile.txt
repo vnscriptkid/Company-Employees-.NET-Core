@@ -75,3 +75,6 @@
 2020-12-27 17:50:40.6395 WARN This is a yellow warning
 2020-12-27 17:50:40.6395 ERROR Something wrong happens
 2020-12-27 18:39:31.6852 INFO Company with id 3d490a70-94ce-4d15-9494-5248280c2ce3 does not exist in database.
+2020-12-27 19:13:00.7539 INFO Company with id 3d490a70-94ce-4d15-9494-5248280c2ce3 does not exist in the database.
+2020-12-27 19:13:08.6010 ERROR [DeleteEmployeeOfCompany] Company with id 0ad5b971-ff51-414d-af01-34187e407557 does not exist
+2020-12-27 19:37:05.2172 INFO Company with id 8c4092a0-1e37-465b-cb92-08d8aa63efad does not exist in the database.
