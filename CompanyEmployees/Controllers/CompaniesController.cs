@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
+using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -35,7 +36,7 @@ namespace CompanyEmployees.Controllers
             return Ok(companiesDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetCompanyById")]
         public IActionResult GetCompany(Guid id)
         {
             var company = _repository.Company.GetCompany(companyId: id, trackChanges: false);
@@ -49,6 +50,30 @@ namespace CompanyEmployees.Controllers
             var companyDto = _mapper.Map<CompanyDto>(company);
 
             return Ok(companyDto);
+        }
+
+        [HttpPost]
+        public IActionResult CreateCompany([FromBody] CompanyForCreationDto companyDto)
+        {
+            if (companyDto == null)
+            {
+                _logger.LogError("CompanyForCreationDto object is null in the body.");
+                return BadRequest("company is missing in the body.");
+            }
+
+            var company = _mapper.Map<Company>(companyDto);
+
+            _repository.Company.Create(company);
+
+            _repository.Save();
+
+            var companyToReturn = _mapper.Map<CompanyDto>(company);
+
+            return CreatedAtRoute(
+                routeName: "GetCompanyById",
+                routeValues: new { id = companyToReturn.Id },
+                value: companyToReturn
+            );
         }
     }
 }

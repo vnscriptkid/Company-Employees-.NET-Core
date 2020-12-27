@@ -16,6 +16,8 @@ namespace CompanyEmployees
                 .ForMember(dest => dest.FullAddress, opt => opt.MapFrom(source => string.Join(' ', source.Address, source.Country)));
 
             CreateMap<Employee, EmployeeDto>();
+
+            CreateMap<CompanyForCreationDto, Company>();
         }
     }
 }

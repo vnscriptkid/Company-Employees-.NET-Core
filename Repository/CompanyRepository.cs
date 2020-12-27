@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Entities;
+using Entities.DataTransferObjects;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,11 @@ namespace Repository
     {
         public CompanyRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
+        }
+            
+        public void Create(CompanyForCreationDto company)
+        {
+            Create(company);
         }
 
         public IEnumerable<Company> GetAllCompanies(bool trackChanges)

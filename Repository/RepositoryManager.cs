@@ -41,9 +41,6 @@ namespace Repository
             }
         }
 
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
+        public void Save() => _repositoryContext.SaveChanges();
     }
 }
