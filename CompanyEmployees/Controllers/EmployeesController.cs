@@ -154,6 +154,12 @@ namespace CompanyEmployees.Controllers
                 return BadRequest("EmployeeForUpdateDto object is null");
             }
 
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the EmployeeForUpdateDto object");
+                return UnprocessableEntity(ModelState);
+            }
+
             var company = _repo.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
             {
@@ -194,19 +200,27 @@ namespace CompanyEmployees.Controllers
                 return NotFound();
             }
 
-            var employee = _repo.Employee.GetEmployee(companyId, employeeId, trackChanges: true);
+            var employeeFound = _repo.Employee.GetEmployee(companyId, employeeId, trackChanges: true);
 
-            if (employee == null)
+            if (employeeFound == null)
             {
                 _logger.LogInfo($"Employee with id: {employeeId} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var employeeToPatch = _mapper.Map<EmployeeForUpdateDto>(employee);
+            var employeeToPatch = _mapper.Map<EmployeeForUpdateDto>(employeeFound);
 
-            patchDoc.ApplyTo(employeeToPatch);
+            patchDoc.ApplyTo(employeeToPatch, ModelState);
 
-            _mapper.Map(employeeToPatch, employee);
+            TryValidateModel(employeeToPatch);
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the EmployeeForUpdateDto object");
+                return UnprocessableEntity(ModelState);
+            }
+
+            _mapper.Map(employeeToPatch, employeeFound);
 
             _repo.Save();
 
