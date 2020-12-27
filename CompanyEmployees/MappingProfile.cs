@@ -15,15 +15,15 @@ namespace CompanyEmployees
             CreateMap<Company, CompanyDto>()
                 .ForMember(dest => dest.FullAddress, opt => opt.MapFrom(source => string.Join(' ', source.Address, source.Country)));
 
-            CreateMap<Employee, EmployeeDto>();
+            CreateMap<CompanyForUpdateDto, Company>();
 
             CreateMap<CompanyForCreationDto, Company>();
 
+            CreateMap<Employee, EmployeeDto>();
+
             CreateMap<EmployeeForCreationDto, Employee>();
 
-            CreateMap<EmployeeForUpdateDto, Employee>();
-
-            CreateMap<CompanyForUpdateDto, Company>();
+            CreateMap<EmployeeForUpdateDto, Employee>().ReverseMap();
         }
     }
 }
