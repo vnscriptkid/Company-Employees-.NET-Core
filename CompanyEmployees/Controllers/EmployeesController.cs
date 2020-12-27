@@ -78,6 +78,12 @@ namespace CompanyEmployees.Controllers
                 return BadRequest("EmployeeForCreationDto object is missing in the body");
             }
 
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the EmployeeForCreationDto object");
+                return UnprocessableEntity(ModelState);
+            }
+
             // make sure company exists
             var company = _repo.Company.GetCompany(companyId, trackChanges: false);
 
