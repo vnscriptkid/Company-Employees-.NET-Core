@@ -16,6 +16,7 @@ using NLog;
 using System.IO;
 using AutoMapper;
 using Contracts;
+using CompanyEmployees.ActionFilters;
 
 namespace CompanyEmployees
 {
@@ -38,6 +39,7 @@ namespace CompanyEmployees
             services.ConfigureSqlContext(Configuration);
             services.ConfigureRepositoryManager();
             services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<ValidationFilterAttribute>();
 
             services.Configure<ApiBehaviorOptions>(options =>
             {

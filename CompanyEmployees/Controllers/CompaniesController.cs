@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CompanyEmployees.ActionFilters;
 using CompanyEmployees.ModelBinders;
 using Contracts;
 using Entities.DataTransferObjects;
@@ -55,14 +56,9 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpPost(Name = "CreateCompany")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateCompany([FromBody] CompanyForCreationDto companyDto)
         {
-            if (companyDto == null)
-            {
-                _logger.LogError("CompanyForCreationDto object is null in the body.");
-                return BadRequest("Company is missing in the body.");
-            }
-
             var company = _mapper.Map<Company>(companyDto);
 
             _repository.Company.CreateCompany(company);
@@ -100,7 +96,7 @@ namespace CompanyEmployees.Controllers
             return Ok(companiesToReturn);
         }
 
-        [HttpPost("collection")]
+        [HttpPost("collection", Name = "CreateCompanyCollection")]
         public async Task<IActionResult> CreateCompanyCollection([FromBody]
             IEnumerable<CompanyForCreationDto> companyCollection)
         {
@@ -109,6 +105,7 @@ namespace CompanyEmployees.Controllers
                 _logger.LogError("Company collection sent from client is null.");
                 return BadRequest("Company collection is null");
             }
+
             var companiesToCreate = _mapper.Map<IEnumerable<Company>>(companyCollection);
 
             foreach (var company in companiesToCreate)
@@ -146,15 +143,10 @@ namespace CompanyEmployees.Controllers
             return NoContent();
         }
 
-        [HttpPut("{companyId}")]
+        [HttpPut("{companyId}", Name = "UpdateCompany")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> UpdateCompany(Guid companyId, [FromBody] CompanyForUpdateDto companyUpdateDto)
         {
-            if (companyUpdateDto == null)
-            {
-                _logger.LogError("CompanyForUpdateDto object sent from client is null.");
-                return BadRequest("CompanyForUpdateDto object is null");
-            }
-
             var companyToUpdate = await _repository.Company.GetCompanyAsync(companyId, trackChanges: true);
 
             if (companyToUpdate == null)
