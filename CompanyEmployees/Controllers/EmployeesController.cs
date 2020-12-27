@@ -29,7 +29,7 @@ namespace CompanyEmployees.Controllers
         [HttpGet]
         public IActionResult GetAllEmployeesOfCompany(Guid companyId)
         {
-            var company = _repo.Company.GetCompany(companyId, trackChanges: false);
+            var company = _repo.Company.GetCompanyAsync(companyId, trackChanges: false);
 
             if (company == null)
             {
@@ -47,7 +47,7 @@ namespace CompanyEmployees.Controllers
         [HttpGet("{employeeId}", Name = "GetSingleEmployeeOfCompany")]
         public IActionResult GetSingleEmployeeOfCompany(Guid companyId, Guid employeeId)
         {
-            var company = _repo.Company.GetCompany(companyId, trackChanges: false);
+            var company = _repo.Company.GetCompanyAsync(companyId, trackChanges: false);
 
             if (company == null)
             {
@@ -85,7 +85,7 @@ namespace CompanyEmployees.Controllers
             }
 
             // make sure company exists
-            var company = _repo.Company.GetCompany(companyId, trackChanges: false);
+            var company = _repo.Company.GetCompanyAsync(companyId, trackChanges: false);
 
             if (company == null)
             {
@@ -117,7 +117,7 @@ namespace CompanyEmployees.Controllers
         public IActionResult DeleteEmployeeOfCompany(Guid companyId, Guid employeeId)
         {
             // find company
-            var company = _repo.Company.GetCompany(companyId, trackChanges: false);
+            var company = _repo.Company.GetCompanyAsync(companyId, trackChanges: false);
 
             if (company == null)
             {
@@ -160,7 +160,7 @@ namespace CompanyEmployees.Controllers
                 return UnprocessableEntity(ModelState);
             }
 
-            var company = _repo.Company.GetCompany(companyId, trackChanges: false);
+            var company = _repo.Company.GetCompanyAsync(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
@@ -192,7 +192,7 @@ namespace CompanyEmployees.Controllers
                 return BadRequest("patchDoc object is null");
             }
 
-            var company = _repo.Company.GetCompany(companyId, trackChanges: false);
+            var company = _repo.Company.GetCompanyAsync(companyId, trackChanges: false);
 
             if (company == null)
             {
