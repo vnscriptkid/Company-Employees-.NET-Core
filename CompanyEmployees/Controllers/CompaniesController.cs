@@ -58,7 +58,7 @@ namespace CompanyEmployees.Controllers
             if (companyDto == null)
             {
                 _logger.LogError("CompanyForCreationDto object is null in the body.");
-                return BadRequest("company is missing in the body.");
+                return BadRequest("Company is missing in the body.");
             }
 
             var company = _mapper.Map<Company>(companyDto);
