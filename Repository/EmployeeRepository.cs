@@ -32,11 +32,14 @@ namespace Repository
             Delete(employee);
         }
 
-        public async Task<IEnumerable<Employee>> GetEmployeesAsync(Guid companyId, EmployeeParameters employeeParameters, bool trackChanges) =>
-            await FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
+        public async Task<PagedList<Employee>> GetEmployeesAsync(Guid companyId, EmployeeParameters employeeParameters, bool trackChanges)
+        {
+            var employees = await FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
                 .OrderBy(e => e.Name)
-                .Skip((employeeParameters.PageNumber - 1) * employeeParameters.PageSize)
-                .Take(employeeParameters.PageSize)
                 .ToListAsync();
+
+            return PagedList<Employee>
+                .ToPagedList(employees, employeeParameters.PageNumber, employeeParameters.PageSize);
+        }
     }
 }
