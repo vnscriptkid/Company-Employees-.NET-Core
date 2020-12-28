@@ -3,6 +3,7 @@ using CompanyEmployees.ActionFilters;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -29,9 +30,10 @@ namespace CompanyEmployees.Controllers
 
         [HttpGet(Name = "GetAllEmployeesOfCompany")]
         [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
-        public async Task<IActionResult> GetAllEmployeesOfCompany(Guid companyId)
+        public async Task<IActionResult> GetAllEmployeesOfCompany(Guid companyId, 
+            [FromQuery] EmployeeParameters employeeParameters)
         {
-            var employees = await _repo.Employee.GetEmployeesAsync(companyId, trackChanges: false);
+            var employees = await _repo.Employee.GetEmployeesAsync(companyId, employeeParameters, trackChanges: false);
 
             var employeesDto = _mapper.Map<IEnumerable<EmployeeDto>>(employees).ToList();
 
