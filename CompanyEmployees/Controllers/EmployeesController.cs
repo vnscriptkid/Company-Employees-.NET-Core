@@ -34,6 +34,11 @@ namespace CompanyEmployees.Controllers
         public async Task<IActionResult> GetAllEmployeesOfCompany(Guid companyId, 
             [FromQuery] EmployeeParameters employeeParameters)
         {
+            if (!employeeParameters.ValidAgeRange)
+            {
+                return BadRequest("Max age can't be less than min age.");
+            }
+
             var employees = await _repo.Employee.GetEmployeesAsync(companyId, employeeParameters, trackChanges: false);
 
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(employees.MetaData));
