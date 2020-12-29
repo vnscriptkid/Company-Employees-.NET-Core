@@ -41,7 +41,7 @@ namespace Repository
                 )
                 .FilterByAge(employeeParameters.MinAge, employeeParameters.MaxAge)
                 .SearchByName(employeeParameters.SearchTerm)
-                .OrderBy(e => e.Name)
+                .Sort(employeeParameters.OrderBy)
                 .ToListAsync();
 
             return PagedList<Employee>
